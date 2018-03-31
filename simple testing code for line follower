@@ -1,0 +1,56 @@
+int Left1=2;
+int Left2=3;
+int Right1=4;
+int Right2=5;
+
+void setup()
+{
+  pinMode(Left1,OUTPUT);
+  pinMode(Left2,OUTPUT);
+  pinMode(Right1,OUTPUT);
+  pinMode(Right2,OUTPUT);
+
+  pinMode(A0, INPUT);
+  pinMode(A1, INPUT);
+  pinMode(A2, INPUT);
+  pinMode(A3, INPUT);
+  pinMode(A4, INPUT);
+
+}
+  
+
+void loop()
+
+{
+  int ex_right=analogRead(A0);
+  int right=analogRead(A1);
+  int center=analogRead(A2);
+  int left=analogRead(A3);
+  int ex_left=analogRead(A4);
+
+ // 700 is the average value for all sensors
+  if(ex_left<700 && ex_right<700) 
+  { // move forward
+     digitalWrite(Left1,HIGH);
+     digitalWrite(Left2,LOW);
+     digitalWrite(Right1,HIGH);
+     digitalWrite(Right2,LOW);
+     
+  }
+  if(ex_left>700 && ex_right<700)
+  { // move left
+     digitalWrite(Left1,HIGH);
+     digitalWrite(Left2,LOW);
+     digitalWrite(Right1,LOW);
+     digitalWrite(Right2,LOW);
+  }
+  
+  if(ex_left<700 && ex_right>700)
+  { // move right 
+     digitalWrite(Left1,LOW);
+     digitalWrite(Left2,LOW);
+     digitalWrite(Right1,HIGH);
+     digitalWrite(Right2,LOW);    
+}
+
+}
