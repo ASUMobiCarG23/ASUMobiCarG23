@@ -1,0 +1,25 @@
+/*
+This embedded system reads analog input and produces a rotating light with speed relative to
+the read value (val). Rotating light is made by arranging 10 LEDs in a circle.
+ */
+
+int val;
+
+void setup() {
+
+pinMode(A0 ,INPUT);
+
+for(int i=0; i<10;i++) 
+ pinMode(i,OUTPUT);
+}
+
+void loop() {
+  val = analogRead(A0);
+
+   for(int i=0; i<10;i++)
+   {
+      digitalWrite(i ,HIGH);
+      delay(val);
+      digitalWrite(i,LOW);
+   }
+}
